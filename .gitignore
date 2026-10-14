@@ -10,3 +10,9 @@ out
 # data/
 public/uploads/
 
+
+backups/
+
+.next/
+
+node_modules/
