@@ -1,0 +1,56 @@
+export const TRANSLATIONS = {
+  en: {
+    home: "Home",
+    netflix: "Netflix",
+    hollywood: "Hollywood",
+    marvel: "Marvel",
+    music: "Music",
+    streaming: "Streaming",
+    search: "Search news...",
+    trending: "Trending Now",
+    latest: "Latest News",
+    readMore: "Read more",
+    share: "Share",
+    comments: "Comments",
+    related: "Related Articles",
+    newsletter: "Newsletter",
+    subscribe: "Subscribe",
+    about: "About",
+    contact: "Contact",
+    privacy: "Privacy",
+    terms: "Terms",
+    darkMode: "Dark Mode",
+    lightMode: "Light Mode",
+    bookmarks: "Bookmarks",
+  },
+  hi: {
+    home: "होम",
+    netflix: "नेटफ्लिक्स",
+    hollywood: "हॉलीवुड",
+    marvel: "मार्वल",
+    music: "संगीत",
+    streaming: "स्ट्रीमिंग",
+    search: "समाचार खोजें...",
+    trending: "ट्रेंडिंग अभी",
+    latest: "ताज़ा खबरें",
+    readMore: "और पढ़ें",
+    share: "शेयर",
+    comments: "टिप्पणियाँ",
+    related: "संबंधित लेख",
+    newsletter: "न्यूज़लेटर",
+    subscribe: "सब्सक्राइब",
+    about: "हमारे बारे में",
+    contact: "संपर्क",
+    privacy: "गोपनीयता",
+    terms: "शर्तें",
+    darkMode: "डार्क मोड",
+    lightMode: "लाइट मोड",
+    bookmarks: "बुकमार्क",
+  },
+} as const;
+
+export type Language = keyof typeof TRANSLATIONS;
+
+export function t(key: keyof typeof TRANSLATIONS.en, lang: Language = "en"): string {
+  return TRANSLATIONS[lang][key] || TRANSLATIONS.en[key];
+}

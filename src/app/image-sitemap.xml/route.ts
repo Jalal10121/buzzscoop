@@ -1,0 +1,33 @@
+import { getAllPosts } from "@/lib/mdx";
+
+const BASE = "https://buzzscoop.news";
+
+export async function GET() {
+  const posts = getAllPosts();
+
+  const urls = posts
+    .map(
+      (post) => `
+  <url>
+    <loc>${BASE}/blog/${post.slug}</loc>
+    <image:image>
+      <image:loc>${post.image}</image:loc>
+      <image:title><![CDATA[${post.title}]]></image:title>
+    </image:image>
+  </url>`
+    )
+    .join("");
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${urls}
+</urlset>`;
+
+  return new Response(xml, {
+    headers: {
+      "Content-Type": "application/xml",
+      "Cache-Control": "public, max-age=3600",
+    },
+  });
+}

@@ -1,0 +1,67 @@
+import { CustomCursor } from '@/components/CustomCursor';
+import { WebVitals } from '@/components/WebVitals';
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { BreakingTicker } from "@/components/breaking/BreakingTicker";
+import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
+import { GoogleAnalytics } from "@/components/monetization/GoogleAnalytics";
+import { AdSenseScript } from "@/components/ads/AdSenseScript";
+import { OneSignalScript } from "@/components/advanced/OneSignalScript";
+import { PushPrompt } from "@/components/advanced/PushPrompt";
+import { ServiceWorkerRegister } from "@/components/advanced/ServiceWorkerRegister";
+import { CookieConsent } from "@/components/monetization/CookieConsent";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://buzzscoop.news"),
+  title: {
+    default: "BuzzScoop — Entertainment News",
+    template: "%s | BuzzScoop",
+  },
+  description: "BuzzScoop — latest entertainment news, Netflix, Hollywood.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  openGraph: { type: "website", siteName: "BuzzScoop", locale: "en_US" },
+  twitter: { card: "summary_large_image" },
+  manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0A0A0A",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://images.pexels.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://cdn.onesignal.com" />
+        <link rel="dns-prefetch" href="https://api.github.com" />
+      </head>
+      <body className="bg-white text-gray-900 antialiased min-h-screen flex flex-col dark:bg-gray-950 dark:text-gray-100">
+        <OrganizationSchema />
+        <GoogleAnalytics />
+        <AdSenseScript />
+        <OneSignalScript />
+        <ServiceWorkerRegister />
+        <BreakingTicker />
+        <Header />
+        <div className="flex-1">{children}</div>
+        <Footer />
+        <CookieConsent />
+        <PushPrompt />
+        <CustomCursor />
+      </body>
+    </html>
+  );
+}

@@ -1,0 +1,25 @@
+import { NextResponse } from "next/server";
+import { getAllPosts } from "@/lib/mdx";
+
+export const runtime = "nodejs";
+
+export async function GET() {
+  try {
+    const posts = getAllPosts();
+    // Return only necessary fields for ticker (no auth needed)
+    const headlines = posts.slice(0, 10).map((p) => ({
+      slug: p.slug,
+      title: p.title,
+      date: p.date,
+      category: p.category,
+    }));
+
+    return NextResponse.json(headlines, {
+      headers: {
+        "Cache-Control": "public, max-age=60, s-maxage=60",
+      },
+    });
+  } catch {
+    return NextResponse.json([], { status: 200 });
+  }
+}

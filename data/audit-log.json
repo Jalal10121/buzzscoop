@@ -1,0 +1,100 @@
+[
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-10-14T09:23:15.260Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-10-14T08:34:49.919Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-10-14T08:32:35.739Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-10-14T08:10:49.856Z"
+  },
+  {
+    "action": "login.failed_wrong_password",
+    "user": "admin",
+    "ip": "::1",
+    "success": false,
+    "timestamp": "2026-10-14T08:04:50.896Z"
+  },
+  {
+    "action": "login.failed_wrong_password",
+    "user": "admin",
+    "ip": "::1",
+    "success": false,
+    "timestamp": "2026-10-14T08:04:33.325Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-09-27T04:49:40.551Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-09-27T04:02:33.352Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-09-26T10:52:45.062Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-09-26T10:52:23.282Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-09-26T10:28:34.693Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-09-26T10:20:53.913Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-09-26T09:40:16.849Z"
+  },
+  {
+    "action": "login.success",
+    "user": "admin",
+    "ip": "::1",
+    "success": true,
+    "timestamp": "2026-09-26T08:56:34.794Z"
+  }
+]

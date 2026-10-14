@@ -1,0 +1,614 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  /* Prevent horizontal scroll */
+  * {
+    max-width: 100%;
+  }
+
+  /* Better tap targets */
+  button:not(.inline-link) {
+    min-height: 40px;
+  }
+
+  a.inline-link,
+  .prose a {
+    min-height: auto;
+    min-width: auto;
+    display: inline;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .dark body {
+    @apply bg-gray-950 text-gray-100;
+  }
+}
+
+@layer components {
+  /* Responsive container — full width on all screens */
+  .container-responsive {
+    @apply w-full max-w-[1400px] mx-auto px-3 sm:px-4 lg:px-6 xl:px-8;
+  }
+
+  /* Article container */
+  .container-article {
+    @apply w-full max-w-3xl mx-auto px-3 sm:px-4 lg:px-6;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  .break-words-safe {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+}
+
+/* Responsive for very large screens */
+@media (min-width: 1920px) {
+  .container-responsive,
+  .max-w-\[1400px\] {
+    max-width: 1600px !important;
+  }
+}
+
+/* Prevent body scroll issues */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Print styles */
+@media print {
+  header, footer, nav, button, .no-print { display: none !important; }
+  body { font-size: 12pt; color: black; background: white; }
+  article { max-width: 100%; padding: 0; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ========================================
+   ADMIN MODE
+   ======================================== */
+body.admin-active > header,
+body.admin-active > footer,
+body.admin-active > div > header,
+body.admin-active > div > footer,
+body.admin-active > div:first-child > header,
+body.admin-active > div:first-child > footer {
+  display: none !important;
+}
+/* END ADMIN MODE */
+/* ========================================
+   FONT OPTIMIZATION
+   ======================================== */
+html {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-display: swap;
+  text-rendering: optimizeSpeed;
+}
+
+/* Prevent layout shift */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Content visibility — skip offscreen rendering */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+/* END FONT OPTIMIZATION */
+/* ========================================
+   PREVENT HORIZONTAL SCROLL
+   ======================================== */
+body {
+  overflow-x: hidden;
+}
+html {
+  overflow-x: hidden;
+}
+/* END PREVENT SCROLL */
+/* ========================================
+   DARK MODE FIX — Text visibility
+   ======================================== */
+.dark body,
+.dark .admin-root {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+/* All white cards become dark in dark mode */
+.dark .bg-white {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+/* Card borders */
+.dark .border,
+.dark .border-gray-100,
+.dark .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+/* Text colors */
+.dark .text-gray-900 {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-gray-700 {
+  color: #cbd5e1 !important;
+}
+
+.dark .text-gray-600 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-gray-400 {
+  color: #64748b !important;
+}
+
+/* Headings */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #f1f5f9 !important;
+}
+
+/* Sidebar — already dark, keep it */
+.dark aside {
+  background-color: #0f172a !important;
+}
+
+/* Yellow cards keep yellow */
+.dark .bg-yellow-50 {
+  background-color: #422006 !important;
+}
+
+.dark .bg-yellow-100 {
+  background-color: #713f12 !important;
+}
+
+/* Purple cards */
+.dark .bg-purple-50 {
+  background-color: #3b0764 !important;
+}
+
+/* Blue cards */
+.dark .bg-blue-50 {
+  background-color: #172554 !important;
+}
+
+/* Green cards */
+.dark .bg-green-50 {
+  background-color: #052e16 !important;
+}
+
+/* Inputs */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: #1e293b !important;
+  color: #f1f5f9 !important;
+  border-color: #334155 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Cards hover */
+.dark .hover\:border-yellow-400:hover {
+  border-color: #eab308 !important;
+}
+
+/* Yellow text keeps yellow */
+.dark .text-yellow-500,
+.dark .text-yellow-600 {
+  color: #facc15 !important;
+}
+
+/* Red text */
+.dark .text-red-600 {
+  color: #f87171 !important;
+}
+
+/* Green text */
+.dark .text-green-600 {
+  color: #4ade80 !important;
+}
+
+/* Smooth transitions */
+body,
+.bg-white,
+.text-gray-900,
+.text-gray-700 {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+/* END DARK MODE FIX */
+/* Admin dark mode — body class based */
+body.admin-active.dark,
+html.dark body.admin-active {
+  background-color: #0f172a !important;
+}
+
+html.dark body.admin-active .bg-white {
+  background-color: #1e293b !important;
+}
+
+html.dark body.admin-active h1,
+html.dark body.admin-active h2,
+html.dark body.admin-active h3,
+html.dark body.admin-active p,
+html.dark body.admin-active span:not(.text-yellow-500):not(.text-yellow-600) {
+  color: inherit;
+}
+/* SIDEBAR SCROLLBAR */
+.sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #4b5563 transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280;
+}
+
+/* Sidebar collapsed — better icon centering */
+aside a {
+  transition: all 0.2s ease;
+}
+
+aside a:hover {
+  transform: translateX(2px);
+}
+/* END SIDEBAR SCROLLBAR */
+/* DARK MODE FIX 2 */
+/* Popular Now section */
+.dark .popular-section {
+  color: #e2e8f0;
+}
+
+.dark .popular-section h3 {
+  color: #f1f5f9;
+}
+
+.dark .popular-section h4 {
+  color: #e2e8f0;
+}
+
+.dark .popular-section h4:hover {
+  color: #facc15;
+}
+
+.dark .popular-section .text-gray-500 {
+  color: #94a3b8;
+}
+
+.dark .popular-section .text-yellow-600 {
+  color: #facc15;
+}
+
+.dark .popular-section .text-yellow-400 {
+  color: #facc15;
+}
+
+/* Tags Cloud */
+.dark .tags-cloud a,
+.dark .tags-cloud .tag {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+.dark .tags-cloud a:hover,
+.dark .tags-cloud .tag:hover {
+  background-color: #facc15 !important;
+  color: #0f172a !important;
+}
+
+.dark .tags-cloud h3 {
+  color: #f1f5f9;
+}
+
+/* Sidebar widgets general */
+.dark aside h3,
+.dark aside h4,
+.dark aside p,
+.dark aside span {
+  color: inherit;
+}
+
+/* All gray text on dark */
+.dark .text-gray-900 { color: #f1f5f9 !important; }
+.dark .text-gray-800 { color: #e2e8f0 !important; }
+.dark .text-gray-700 { color: #cbd5e1 !important; }
+.dark .text-gray-600 { color: #94a3b8 !important; }
+.dark .text-gray-500 { color: #94a3b8 !important; }
+.dark .text-gray-400 { color: #64748b !important; }
+
+/* Yellow text stays */
+.dark .text-yellow-400,
+.dark .text-yellow-500,
+.dark .text-yellow-600 {
+  color: #facc15 !important;
+}
+
+/* Dark cards */
+.dark .bg-gray-50 {
+  background-color: #1e293b !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #1e293b !important;
+}
+
+/* Border */
+.dark .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+/* END DARK MODE FIX 2 */
+/* SIDEBAR WIDGETS */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* END SIDEBAR WIDGETS */
+/* CARD ANIMATIONS */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.group {
+  animation: cardFadeIn 0.4s ease-out;
+}
+
+/* Smooth transitions for all cards */
+article, .group {
+  will-change: transform, box-shadow;
+}
+
+/* Better focus states */
+.group:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
+}
+/* END CARD ANIMATIONS */
+/* CARD ADVANCED ANIMATIONS */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cards fade in nicely */
+main a[href^="/blog/"] {
+  animation: cardFadeIn 0.5s ease-out backwards;
+}
+
+main a[href^="/blog/"]:nth-child(1) { animation-delay: 0.05s; }
+main a[href^="/blog/"]:nth-child(2) { animation-delay: 0.1s; }
+main a[href^="/blog/"]:nth-child(3) { animation-delay: 0.15s; }
+main a[href^="/blog/"]:nth-child(4) { animation-delay: 0.2s; }
+main a[href^="/blog/"]:nth-child(5) { animation-delay: 0.25s; }
+main a[href^="/blog/"]:nth-child(6) { animation-delay: 0.3s; }
+
+/* Smooth everything */
+main a[href^="/blog/"] {
+  will-change: transform, box-shadow;
+}
+
+/* Save button hover */
+main a[href^="/blog/"] button:hover {
+  transform: scale(1.1);
+}
+
+/* Tag pills in card meta */
+main a[href^="/blog/"] .tag-pill {
+  transition: all 0.2s ease;
+}
+/* END CARD ADVANCED ANIMATIONS */
+/* AUTO-RESPONSIVE GRID */
+/* Card auto-adjust based on screen */
+@media (min-width: 1280px) {
+  /* Large screens — 3 columns */
+  .latest-news-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Fix card text on smaller columns */
+@media (max-width: 1279px) and (min-width: 1024px) {
+  /* Medium (2 columns with sidebar) */
+  main a[href^="/blog/"] h2 {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  main a[href^="/blog/"] p {
+    font-size: 0.75rem;
+  }
+}
+
+/* Prevent card content overflow */
+main a[href^="/blog/"] {
+  min-width: 0;
+  word-wrap: break-word;
+}
+
+/* Author name truncation */
+main a[href^="/blog/"] span.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100px;
+}
+
+/* Tags in sidebar */
+main a[href^="/blog/"] .meta-pill {
+  transition: all 0.2s ease;
+}
+/* END AUTO-RESPONSIVE GRID */
+
+/* Ensure normal cursor everywhere */
+* {
+  cursor: auto;
+}
+a, button, [role="button"] {
+  cursor: pointer;
+}
+input, textarea, select {
+  cursor: text;
+}
+input[type="checkbox"], input[type="radio"], input[type="submit"], button {
+  cursor: pointer;
+}
+
+/* CUSTOM CURSOR */
+body.custom-cursor-active,
+body.custom-cursor-active a,
+body.custom-cursor-active button,
+body.custom-cursor-active [role="button"] {
+  cursor: none;
+}
+/* END CUSTOM CURSOR */
+/* CLICKABLE CURSOR */
+/* All links get pointer */
+a,
+a * {
+  cursor: pointer !important;
+}
+
+/* All buttons get pointer */
+button,
+button *,
+[role="button"],
+[role="button"] * {
+  cursor: pointer !important;
+}
+
+/* Article cards */
+article,
+article *,
+.group,
+.group * {
+  cursor: pointer;
+}
+
+/* Clickable divs */
+[onclick],
+[data-clickable] {
+  cursor: pointer;
+}
+
+/* Inputs keep text cursor */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  cursor: text !important;
+}
+
+/* Dropdowns */
+select {
+  cursor: pointer;
+}
+
+/* Disabled state */
+button:disabled,
+[disabled] {
+  cursor: not-allowed !important;
+}
+/* END CLICKABLE CURSOR */
